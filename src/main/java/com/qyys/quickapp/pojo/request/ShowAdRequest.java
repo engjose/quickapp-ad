@@ -1,4 +1,4 @@
-package com.qyys.quickapp.pojo.vo;
+package com.qyys.quickapp.pojo.request;
 
 import lombok.Data;
 

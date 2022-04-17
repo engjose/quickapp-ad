@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qyys.quickapp.repository.mapper.UserFavorMapper">
+    <select id="selectBySkuId" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from dish_user_favor
+        where sku_id = #{skuId,jdbcType=BIGINT}
+    </select>
+
+    <select id="selectByUserId" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from dish_user_favor
+        where user_id = #{userId,jdbcType=VARCHAR}
+        order by id desc
+    </select>
+</mapper>

@@ -1,11 +1,9 @@
 package com.qyys.quickapp.application.impl;
-
 import com.qyys.quickapp.application.AdSwitchAppService;
 import com.qyys.quickapp.common.enums.PhoneTypeEnum;
 import com.qyys.quickapp.common.exception.BusinessException;
 import com.qyys.quickapp.common.exception.ExceptionEnum;
 import org.springframework.stereotype.Service;
-
 import java.util.HashMap;
 import java.util.Map;
 

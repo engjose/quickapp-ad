@@ -1,0 +1,7 @@
+server:
+  port: 8080
+db:
+  url: jdbc:mysql://47.100.221.41:3306/gingili_dish?useUnicode=true&characterEncoding=utf8&autoReconnect=true&failOverReadOnly=false&useSSL=false
+  user: root
+  password: ZTEywz0301
+  driver: com.mysql.jdbc.Driver

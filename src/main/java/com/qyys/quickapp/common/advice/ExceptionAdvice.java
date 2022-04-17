@@ -1,7 +1,7 @@
 package com.qyys.quickapp.common.advice;
 import com.qyys.quickapp.common.exception.BusinessException;
 import com.qyys.quickapp.common.exception.ExceptionEnum;
-import com.qyys.quickapp.pojo.vo.BaseResponse;
+import com.qyys.quickapp.pojo.response.BaseResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.validation.BindException;

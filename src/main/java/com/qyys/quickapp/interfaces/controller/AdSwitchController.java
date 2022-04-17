@@ -1,8 +1,8 @@
 package com.qyys.quickapp.interfaces.controller;
 import com.qyys.quickapp.application.AdSwitchAppService;
-import com.qyys.quickapp.pojo.vo.BaseResponse;
-import com.qyys.quickapp.pojo.vo.SetAdConfRequest;
-import com.qyys.quickapp.pojo.vo.ShowAdRequest;
+import com.qyys.quickapp.pojo.response.BaseResponse;
+import com.qyys.quickapp.pojo.request.SetAdConfRequest;
+import com.qyys.quickapp.pojo.request.ShowAdRequest;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

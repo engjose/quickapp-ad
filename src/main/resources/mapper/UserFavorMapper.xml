@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qyys.quickapp.repository.mapper.UserFavorMapper">
+  <resultMap id="BaseResultMap" type="com.qyys.quickapp.pojo.po.UserFavorPO">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="user_id" jdbcType="VARCHAR" property="userId" />
+    <result column="sku_id" jdbcType="BIGINT" property="skuId" />
+    <result column="sku_name" jdbcType="VARCHAR" property="skuName" />
+    <result column="sku_img" jdbcType="VARCHAR" property="skuImg" />
+    <result column="like_flag" jdbcType="INTEGER" property="likeFlag" />
+    <result column="add_time" jdbcType="TIMESTAMP" property="addTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, user_id, sku_id, sku_name, sku_img, like_flag, add_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from dish_user_favor
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from dish_user_favor
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.qyys.quickapp.pojo.po.UserFavorPO" useGeneratedKeys="true">
+    insert into dish_user_favor (user_id, sku_id, sku_name, 
+      sku_img, like_flag, add_time
+      )
+    values (#{userId,jdbcType=VARCHAR}, #{skuId,jdbcType=BIGINT}, #{skuName,jdbcType=VARCHAR}, 
+      #{skuImg,jdbcType=VARCHAR}, #{likeFlag,jdbcType=INTEGER}, #{addTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.qyys.quickapp.pojo.po.UserFavorPO" useGeneratedKeys="true">
+    insert into dish_user_favor
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="skuId != null">
+        sku_id,
+      </if>
+      <if test="skuName != null">
+        sku_name,
+      </if>
+      <if test="skuImg != null">
+        sku_img,
+      </if>
+      <if test="likeFlag != null">
+        like_flag,
+      </if>
+      <if test="addTime != null">
+        add_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="skuId != null">
+        #{skuId,jdbcType=BIGINT},
+      </if>
+      <if test="skuName != null">
+        #{skuName,jdbcType=VARCHAR},
+      </if>
+      <if test="skuImg != null">
+        #{skuImg,jdbcType=VARCHAR},
+      </if>
+      <if test="likeFlag != null">
+        #{likeFlag,jdbcType=INTEGER},
+      </if>
+      <if test="addTime != null">
+        #{addTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.qyys.quickapp.pojo.po.UserFavorPO">
+    update dish_user_favor
+    <set>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="skuId != null">
+        sku_id = #{skuId,jdbcType=BIGINT},
+      </if>
+      <if test="skuName != null">
+        sku_name = #{skuName,jdbcType=VARCHAR},
+      </if>
+      <if test="skuImg != null">
+        sku_img = #{skuImg,jdbcType=VARCHAR},
+      </if>
+      <if test="likeFlag != null">
+        like_flag = #{likeFlag,jdbcType=INTEGER},
+      </if>
+      <if test="addTime != null">
+        add_time = #{addTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.qyys.quickapp.pojo.po.UserFavorPO">
+    update dish_user_favor
+    set user_id = #{userId,jdbcType=VARCHAR},
+      sku_id = #{skuId,jdbcType=BIGINT},
+      sku_name = #{skuName,jdbcType=VARCHAR},
+      sku_img = #{skuImg,jdbcType=VARCHAR},
+      like_flag = #{likeFlag,jdbcType=INTEGER},
+      add_time = #{addTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
