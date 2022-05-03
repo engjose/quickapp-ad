@@ -1,8 +1,10 @@
 package com.qyys.quickapp.pojo.po;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -10,7 +12,7 @@ import java.util.Date;
  *
  * @author Generator
  *
- * @date 2022-04-16
+ * @date 2022-05-03
  */
 @Data
 @Builder
@@ -22,6 +24,9 @@ public class MenuPO implements Serializable {
 
     /** 菜单名称 */
     private String menuName;
+
+    /** 图片icon */
+    private String menuIcon;
 
     /** 菜单顺序 */
     private Integer menuRank;

@@ -55,18 +55,25 @@
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
 
+        <table tableName="dish_menu" domainObjectName="MenuPO" mapperName="MenuMapper"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <generatedKey column="id" sqlStatement="JDBC" identity="true" />
+        </table>
+
         <!--<table tableName="dish_sku" domainObjectName="SkuPO" mapperName="SkuMapper"-->
                <!--enableCountByExample="false" enableUpdateByExample="false"-->
                <!--enableDeleteByExample="false" enableSelectByExample="false"-->
                <!--selectByExampleQueryId="false">-->
             <!--<generatedKey column="id" sqlStatement="JDBC" identity="true" />-->
         <!--</table>-->
-        <table tableName="dish_user_favor" domainObjectName="UserFavorPO" mapperName="UserFavorMapper"
-               enableCountByExample="false" enableUpdateByExample="false"
-               enableDeleteByExample="false" enableSelectByExample="false"
-               selectByExampleQueryId="false">
-            <generatedKey column="id" sqlStatement="JDBC" identity="true" />
-        </table>
+        <!--<table tableName="dish_user_favor" domainObjectName="UserFavorPO" mapperName="UserFavorMapper"-->
+               <!--enableCountByExample="false" enableUpdateByExample="false"-->
+               <!--enableDeleteByExample="false" enableSelectByExample="false"-->
+               <!--selectByExampleQueryId="false">-->
+            <!--<generatedKey column="id" sqlStatement="JDBC" identity="true" />-->
+        <!--</table>-->
         <!--<table tableName="dish_user_login" domainObjectName="UserLoginPO" mapperName="UserLoginMapper"-->
                <!--enableCountByExample="false" enableUpdateByExample="false"-->
                <!--enableDeleteByExample="false" enableSelectByExample="false"-->

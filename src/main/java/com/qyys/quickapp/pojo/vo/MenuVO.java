@@ -13,4 +13,7 @@ public class MenuVO {
 
     /** 菜单名称 */
     private String menuName;
+
+    /** 图片icon */
+    private String menuIcon;
 }
