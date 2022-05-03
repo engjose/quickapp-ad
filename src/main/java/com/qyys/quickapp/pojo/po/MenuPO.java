@@ -26,7 +26,10 @@ public class MenuPO implements Serializable {
     private String menuName;
 
     /** 图片icon */
-    private String menuIcon;
+    private String defaultIcon;
+
+    /** 选中icon */
+    private String selectIcon;
 
     /** 菜单顺序 */
     private Integer menuRank;

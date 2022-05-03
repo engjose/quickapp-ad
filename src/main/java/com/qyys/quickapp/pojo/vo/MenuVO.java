@@ -15,5 +15,8 @@ public class MenuVO {
     private String menuName;
 
     /** 图片icon */
-    private String menuIcon;
+    private String defaultIcon;
+
+    /** 选中ICON */
+    private String selectIcon;
 }

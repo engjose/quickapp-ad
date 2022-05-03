@@ -31,7 +31,8 @@ public class MenuAppServiceImpl implements MenuAppService {
                     MenuVO menuVO = new MenuVO();
                     menuVO.setMenuId(element.getId());
                     menuVO.setMenuName(element.getMenuName());
-                    menuVO.setMenuIcon(element.getMenuIcon());
+                    menuVO.setDefaultIcon(element.getDefaultIcon());
+                    menuVO.setSelectIcon(element.getSelectIcon());
                     return menuVO;
                 }).collect(Collectors.toList());
     }
