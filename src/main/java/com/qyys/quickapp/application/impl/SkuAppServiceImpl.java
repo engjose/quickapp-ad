@@ -41,6 +41,7 @@ public class SkuAppServiceImpl implements SkuAppService {
                     skuVO.setSkuId(element.getId());
                     skuVO.setSkuName(element.getSkuName());
                     skuVO.setSkuImg(element.getSkuImg());
+                    skuVO.setMenuId(element.getMenuId());
                     skuVO.setSkuScore(element.getSkuScore());
                     skuVO.setMaterialList(JSONArray.parseArray(element.getMaterial(), SkuMaterialVO.class));
                     skuVO.setDetailList(JSONArray.parseArray(element.getDetail(), SkuDetailVO.class));
@@ -67,6 +68,7 @@ public class SkuAppServiceImpl implements SkuAppService {
         skuVO.setSkuId(exist.getId());
         skuVO.setSkuName(exist.getSkuName());
         skuVO.setSkuImg(exist.getSkuImg());
+        skuVO.setMenuId(exist.getMenuId());
         skuVO.setSkuScore(exist.getSkuScore());
         skuVO.setLikeFlag(SkuLikeEnum.ofBoolean(userFavorPO));
         skuVO.setMaterialList(JSONArray.parseArray(exist.getMaterial(), SkuMaterialVO.class));
