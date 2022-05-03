@@ -8,6 +8,8 @@ import lombok.Data;
 @Data
 public class SkuQueryCondition {
 
+    private Long id;
+
     private Long menuId;
 
     private String skuNameLike;

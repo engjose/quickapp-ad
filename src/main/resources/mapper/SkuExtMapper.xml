@@ -19,7 +19,6 @@
         select
         <include refid="Base_Column_List" />
         from dish_sku
-        where
         <include refid="sql_where"/>
         order by sku_score desc, id desc
     </select>

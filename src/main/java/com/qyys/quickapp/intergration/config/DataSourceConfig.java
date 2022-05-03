@@ -1,6 +1,6 @@
 package com.qyys.quickapp.intergration.config;
 import com.alibaba.druid.pool.DruidDataSource;
-import com.github.pagehelper.PageHelper;
+import com.google.common.collect.Lists;
 import lombok.Data;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.annotation.MapperScan;
@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
-import java.util.Properties;
+import java.util.List;
 
 /**
  * @author : Yuan.Pan 2020/8/10 8:58 PM
@@ -48,6 +48,10 @@ public class DataSourceConfig {
         druidDataSource.setUrl(url);
         druidDataSource.setUsername(user);
         druidDataSource.setPassword(password);
+
+        List<String> initSqlList = Lists.newArrayList();
+        initSqlList.add("set names utf8mb4");
+        druidDataSource.setConnectionInitSqls(initSqlList);
         druidDataSource.init();
         return druidDataSource;
     }
@@ -69,20 +73,20 @@ public class DataSourceConfig {
         return dataSourceTransactionManager;
     }
 
-    @Bean
-    public PageHelper getPageHelper(){
-        PageHelper pageHelper=new PageHelper();
-        Properties properties=new Properties();
-        properties.setProperty("helperDialect","mysql");
-
-        //分页合理化参数，默认值为false。当该参数设置为 true 时，pageNum<=0 时会查询第一页， pageNum>pages（超过总数时），会查询最后一页。默认false 时，直接根据参数进行查询。
-        properties.setProperty("reasonable","true");
-        properties.setProperty("supportMethodsArguments","true");
-        properties.setProperty("params","count=countSql");
-
-        //默认值为 false，当该参数设置为 true 时，如果 pageSize=0 或者 RowBounds.limit = 0 就会查询出全部的结果
-        properties.setProperty("pageSizeZero", "false");
-        pageHelper.setProperties(properties);
-        return pageHelper;
-    }
+//    @Bean
+//    public PageHelper getPageHelper(){
+//        PageHelper pageHelper=new PageHelper();
+//        Properties properties=new Properties();
+//        properties.setProperty("helperDialect","mysql");
+//
+//        //分页合理化参数，默认值为false。当该参数设置为 true 时，pageNum<=0 时会查询第一页， pageNum>pages（超过总数时），会查询最后一页。默认false 时，直接根据参数进行查询。
+//        properties.setProperty("reasonable","true");
+//        properties.setProperty("supportMethodsArguments","true");
+//        properties.setProperty("params","count=countSql");
+//
+//        //默认值为 false，当该参数设置为 true 时，如果 pageSize=0 或者 RowBounds.limit = 0 就会查询出全部的结果
+//        properties.setProperty("pageSizeZero", "false");
+//        pageHelper.setProperties(properties);
+//        return pageHelper;
+//    }
 }
