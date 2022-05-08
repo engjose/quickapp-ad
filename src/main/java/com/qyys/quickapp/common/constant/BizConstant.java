@@ -5,5 +5,5 @@ package com.qyys.quickapp.common.constant;
  */
 public class BizConstant {
 
-    public static final String LOGIN_TOKEN = "X=TOKEN";
+    public static final String LOGIN_TOKEN = "X-TOKEN";
 }
