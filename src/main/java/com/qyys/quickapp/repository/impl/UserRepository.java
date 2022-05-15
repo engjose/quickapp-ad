@@ -3,7 +3,7 @@ import com.qyys.quickapp.intergration.id.IdWorker;
 import com.qyys.quickapp.pojo.po.UserPO;
 import com.qyys.quickapp.repository.IUserRepository;
 import com.qyys.quickapp.repository.mapper.UserMapper;
-import org.apache.tomcat.util.security.MD5Encoder;
+import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import java.util.Date;
@@ -32,7 +32,7 @@ public class UserRepository implements IUserRepository {
         record.setAddTime(new Date());
         record.setUpdateTime(new Date());
         record.setUserId(idWorker.nextId(null));
-        record.setPassword(MD5Encoder.encode(password.getBytes()));
+        record.setPassword(DigestUtils.md5Hex(password.getBytes()));
         userMapper.insertSelective(record);
         return record;
     }

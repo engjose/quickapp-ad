@@ -7,11 +7,10 @@ import com.qyys.quickapp.pojo.po.UserLoginPO;
 import com.qyys.quickapp.pojo.po.UserPO;
 import com.qyys.quickapp.repository.IUserLoginRepository;
 import com.qyys.quickapp.repository.IUserRepository;
-import org.apache.tomcat.util.security.MD5Encoder;
+import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import java.util.Date;
 
 /**
@@ -49,7 +48,7 @@ public class UserAppServiceImpl implements UserAppService {
             throw new BusinessException(ExceptionEnum.USER_IS_NOT_EXIST);
         }
 
-        if (!exist.getPassword().equals(MD5Encoder.encode(password.getBytes()))) {
+        if (!exist.getPassword().equals(DigestUtils.md5Hex(password.getBytes()))) {
             throw new BusinessException(ExceptionEnum.USER_PASSWORD_ERR);
         }
 

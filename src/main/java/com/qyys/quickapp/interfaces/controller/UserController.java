@@ -22,12 +22,12 @@ public class UserController {
     private UserAppService userAppService;
 
     @PostMapping("/register")
-    public BaseResponse<String> register(@Validated @RequestBody UserRegisterRequest request) {
+    public BaseResponse<String> register(@RequestBody @Validated UserRegisterRequest request) {
         return BaseResponse.SUCCESS(userAppService.register(request.getUserName(), request.getPassword()));
     }
 
     @PostMapping("/login")
-    public BaseResponse<String> login(@Validated @RequestBody UserLoginRequest request) {
+    public BaseResponse<String> login(@RequestBody @Validated UserLoginRequest request) {
         return BaseResponse.SUCCESS(userAppService.login(request.getUserName(), request.getPassword()));
     }
 }
