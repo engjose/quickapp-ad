@@ -16,6 +16,6 @@ public class UserLoginRequest {
     private String userName;
 
     @NotBlank(message = "密码不能为空")
-    @Length(min = 6, max = 10, message = "用户名在6~10位之间")
+    @Length(min = 6, max = 10, message = "密码在6~10位之间")
     private String password;
 }
