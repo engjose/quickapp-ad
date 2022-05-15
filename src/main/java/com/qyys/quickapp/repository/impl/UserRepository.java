@@ -33,6 +33,7 @@ public class UserRepository implements IUserRepository {
         record.setUpdateTime(new Date());
         record.setUserId(idWorker.nextId(null));
         record.setPassword(MD5Encoder.encode(password.getBytes()));
+        userMapper.insertSelective(record);
         return record;
     }
 }

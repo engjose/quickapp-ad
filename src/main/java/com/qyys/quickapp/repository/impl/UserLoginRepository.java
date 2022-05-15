@@ -32,6 +32,7 @@ public class UserLoginRepository implements IUserLoginRepository {
         record.setAddTime(new Date());
         record.setLoginToken(idWorker.nextId("TOKEN"));
         record.setExpiredTime(DateUtils.addDays(new Date(), 7));
+        userLoginMapper.insertSelective(record);
         return record.getLoginToken();
     }
 
