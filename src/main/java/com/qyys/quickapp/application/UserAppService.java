@@ -9,5 +9,5 @@ public interface UserAppService {
 
     String login(String userName, String password);
 
-    String authLogin(String xToken);
+    String authLogin(String xToken, Boolean required);
 }

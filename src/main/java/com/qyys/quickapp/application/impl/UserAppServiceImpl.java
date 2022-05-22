@@ -8,6 +8,7 @@ import com.qyys.quickapp.pojo.po.UserPO;
 import com.qyys.quickapp.repository.IUserLoginRepository;
 import com.qyys.quickapp.repository.IUserRepository;
 import org.apache.commons.codec.digest.DigestUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -56,11 +57,18 @@ public class UserAppServiceImpl implements UserAppService {
     }
 
     @Override
-    public String authLogin(String xToken) {
-        if (null == xToken) {
+    public String authLogin(String xToken, Boolean required) {
+        // 必须登录
+        if (required && StringUtils.isBlank(xToken)) {
             throw new BusinessException(ExceptionEnum.NOT_LOGIN_ERR);
         }
 
+        // 不需要验证登录
+        if (StringUtils.isBlank(xToken)) {
+            return null;
+        }
+
+        // 验证登录
         UserLoginPO exist = iUserLoginRepository.selectByToken(xToken);
         if (null == exist) {
             throw new BusinessException(ExceptionEnum.NOT_LOGIN_ERR);

@@ -28,7 +28,7 @@ public class SkuController {
         return BaseResponse.SUCCESS(skuAppService.querySkuList(request));
     }
 
-    @LoginAuth
+    @LoginAuth(required = false)
     @GetMapping("/query")
     public BaseResponse<SkuVO> loadSku(@NotNull(message = "skuId不能为空") Long skuId) {
         return BaseResponse.SUCCESS(skuAppService.loadSku(skuId));

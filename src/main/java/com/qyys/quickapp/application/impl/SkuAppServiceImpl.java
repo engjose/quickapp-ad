@@ -40,6 +40,7 @@ public class SkuAppServiceImpl implements SkuAppService {
                     SkuVO skuVO = new SkuVO();
                     skuVO.setSkuId(element.getId());
                     skuVO.setSkuName(element.getSkuName());
+                    skuVO.setSkuDesc(element.getSkuDesc());
                     skuVO.setSkuImg(element.getSkuImg());
                     skuVO.setMenuId(element.getMenuId());
                     skuVO.setSkuScore(element.getSkuScore());
@@ -67,6 +68,7 @@ public class SkuAppServiceImpl implements SkuAppService {
         SkuVO skuVO = new SkuVO();
         skuVO.setSkuId(exist.getId());
         skuVO.setSkuName(exist.getSkuName());
+        skuVO.setSkuDesc(exist.getSkuDesc());
         skuVO.setSkuImg(exist.getSkuImg());
         skuVO.setMenuId(exist.getMenuId());
         skuVO.setSkuScore(exist.getSkuScore());

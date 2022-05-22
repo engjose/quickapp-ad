@@ -6,6 +6,7 @@ import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
+import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
@@ -28,8 +29,12 @@ public class LoginAuthAspect {
         try {
             ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
             HttpServletRequest request = attributes.getRequest();
+
+            // get annotation
+            LoginAuth annotation = ((MethodSignature) point.getSignature()).getMethod().getAnnotation(LoginAuth.class);
+
             String xToken = request.getHeader(BizConstant.LOGIN_TOKEN);
-            UserContext.init(userAppService.authLogin(xToken));
+            UserContext.init(userAppService.authLogin(xToken, annotation.required()));
 
             Object[] params = point.getArgs();
             return point.proceed(params);

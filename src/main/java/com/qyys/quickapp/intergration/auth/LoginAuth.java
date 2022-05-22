@@ -10,4 +10,6 @@ import java.lang.annotation.Target;
 @Target({ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)
 public @interface LoginAuth {
+
+    boolean required() default true;
 }

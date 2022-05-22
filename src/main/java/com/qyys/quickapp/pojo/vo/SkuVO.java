@@ -18,6 +18,9 @@ public class SkuVO {
     /** 菜品名称 */
     private String skuName;
 
+    /** 菜品描述 */
+    private String skuDesc;
+
     /** 商品分数 */
     private Integer skuScore;
 
