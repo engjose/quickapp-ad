@@ -1,8 +1,5 @@
 package com.qyys.quickapp.pojo.request;
-
 import lombok.Data;
-
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 /**
@@ -11,7 +8,7 @@ import javax.validation.constraints.NotNull;
 @Data
 public class UserFavorRequest {
 
-    @NotBlank(message = "skuId 不能为空")
+    @NotNull(message = "skuId 不能为空")
     private Long skuId;
 
     @NotNull(message = "是否收藏不能为空")

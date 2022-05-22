@@ -46,6 +46,7 @@ public class FavorRepository implements IFavorRepository {
         record.setLikeFlag(SkuLikeEnum.ofEnum(likeFlag).getCode());
         record.setAddTime(new Date());
         record.setUserId(UserContext.getUserId());
+        userFavorMapper.insertSelective(record);
     }
 
     @Override
