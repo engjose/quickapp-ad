@@ -2,6 +2,8 @@ package com.qyys.quickapp.repository.condition;
 
 import lombok.Data;
 
+import java.util.List;
+
 /**
  * @author : Yuan.Pan 2022/4/16 11:33 PM
  */
@@ -13,4 +15,6 @@ public class SkuQueryCondition {
     private Long menuId;
 
     private String skuNameLike;
+
+    private List<Long> skuIdList;
 }

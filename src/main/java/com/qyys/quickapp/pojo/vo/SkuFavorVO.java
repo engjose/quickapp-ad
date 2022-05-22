@@ -11,5 +11,9 @@ public class SkuFavorVO {
 
     private String skuName;
 
+    private String skuDesc;
+
+    private Integer skuScore;
+
     private String skuImg;
 }

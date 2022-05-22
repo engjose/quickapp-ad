@@ -14,6 +14,9 @@ import com.qyys.quickapp.repository.IFavorRepository;
 import com.qyys.quickapp.repository.ISkuRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
+
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -53,12 +56,19 @@ public class FavorAppServiceImpl implements FavorAppService {
     @Override
     public PageQueryResponse<SkuFavorVO> listSkuFavor(PageQueryRequest request) {
         PageInfo<UserFavorPO> pageInfo = iFavorRepository.pageSelect(UserContext.getUserId(), request);
-        List<SkuFavorVO> resultList = pageInfo.getList().stream()
+        if (CollectionUtils.isEmpty(pageInfo.getList())) {
+            return new PageQueryResponse<>(0L, Collections.emptyList());
+        }
+
+        List<SkuPO> skuPOList = iSkuRepository.selectSkuList(pageInfo.getList().stream().map(UserFavorPO::getSkuId).collect(Collectors.toList()));
+        List<SkuFavorVO> resultList = skuPOList.stream()
                 .map(element -> {
                     SkuFavorVO record = new SkuFavorVO();
-                    record.setSkuId(element.getSkuId());
+                    record.setSkuId(element.getId());
                     record.setSkuName(element.getSkuName());
                     record.setSkuImg(element.getSkuImg());
+                    record.setSkuDesc(element.getSkuDesc());
+                    record.setSkuScore(element.getSkuScore());
                     return record;
                 }).collect(Collectors.toList());
 

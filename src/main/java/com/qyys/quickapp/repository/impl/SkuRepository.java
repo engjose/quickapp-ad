@@ -8,6 +8,10 @@ import com.qyys.quickapp.repository.condition.SkuQueryCondition;
 import com.qyys.quickapp.repository.mapper.SkuMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.util.CollectionUtils;
+
+import java.util.Collections;
+import java.util.List;
 
 /**
  * @author : Yuan.Pan 2022/4/16 1:40 PM
@@ -31,5 +35,16 @@ public class SkuRepository implements ISkuRepository {
     @Override
     public SkuPO loadSku(Long skuId) {
         return skuMapper.selectByPrimaryKey(skuId);
+    }
+
+    @Override
+    public List<SkuPO> selectSkuList(List<Long> skuIdList) {
+        if (CollectionUtils.isEmpty(skuIdList)) {
+            return Collections.emptyList();
+        }
+
+        SkuQueryCondition condition = new SkuQueryCondition();
+        condition.setSkuIdList(skuIdList);
+        return skuMapper.selectList(condition);
     }
 }

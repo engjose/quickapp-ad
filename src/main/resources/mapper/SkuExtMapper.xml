@@ -12,6 +12,12 @@
             <if test="skuNameLike != null">
                 and sku_name like concat('%', #{skuNameLike}, '%')
             </if>
+            <if test="skuIdList != null">
+                and id in
+                <foreach collection="skuIdList" item="item" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+            </if>
         </where>
     </sql>
 
